@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>مؤسسة الباشا | للتوريد والتجارة</title>
+
+<style>
+:root {
+  --black: #080808;
+  --surface: #171717;
+  --surface2: #222222;
+  --gold: #c99a45;
+  --gold-light: #edcf91;
+  --white: #ffffff;
+  --muted: #d0d0d0;
+  --border: #363636;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  background: var(--black);
+  color: var(--white);
+}
+a { color: var(--gold-light); }
+header {
+  background: #050505;
+  color: var(--white);
+  padding: 17px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  border-bottom: 2px solid var(--gold);
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.logo {
+  width: 56px;
+  height: 56px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-size: 31px;
+  font-weight: bold;
+}
+.brand h2 { margin: 0 0 6px; color: white; }
+.brand small { color: var(--gold-light); }
+nav { display: flex; gap: 16px; flex-wrap: wrap; }
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color .2s;
+}
+nav a:hover { color: var(--gold-light); }
+
+.hero {
+  padding: 75px 7%;
+  background: radial-gradient(ellipse at top, #242424, #050505 75%);
+  color: white;
+  text-align: center;
+  border-bottom: 1px solid #292929;
+}
+.hero h1 {
+  font-size: clamp(29px, 5vw, 48px);
+  line-height: 1.5;
+  margin: 0 0 18px;
+}
+.hero h1 span { color: var(--gold-light); }
+.hero p {
+  line-height: 2.1;
+  color: #eeeeee;
+  max-width: 700px;
+  margin: 0 auto 22px;
+}
+.btn {
+  display: inline-block;
+  border: 0;
+  border-radius: 8px;
+  padding: 13px 19px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  margin: 5px 0;
+  font-family: inherit;
+  transition: transform .2s, opacity .2s;
+}
+.btn:hover { transform: translateY(-2px); opacity: .92; }
+.gold { background: var(--gold); color: #080808; }
+.outline {
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  background: transparent;
+}
+
+section { padding: 45px 6%; }
+.section-title { text-align: center; margin-bottom: 28px; }
+.section-title h2 {
+  color: var(--gold-light);
+  font-size: 27px;
+  margin: 0 0 10px;
+}
+.section-title p { color: var(--muted); line-height: 1.9; }
+
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 27px;
+}
+.category {
+  background: var(--surface2);
+  border: 1px solid #444;
+  color: white;
+  padding: 11px 17px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: .2s;
+}
+.category:hover { border-color: var(--gold); }
+.category.active {
+  background: var(--gold);
+  color: #080808;
+  border-color: var(--gold);
+  font-weight: bold;
+}
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px;
+}
+.product {
+  background: var(--surface);
+  border-radius: 13px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform .2s, border-color .2s;
+}
+.product:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
+.product-art {
+  height: 145px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(140deg, #292929, #111111);
+  border-bottom: 1px solid #303030;
+  font-size: 62px;
+}
+.product-info { padding: 17px; }
+.product-info h3 { margin: 0 0 10px; color: white; font-size: 18px; }
+.product-info p {
+  color: #d0d0d0;
+  font-size: 13px;
+  line-height: 1.9;
+  min-height: 45px;
+}
+.product-info .btn { width: 100%; text-align: center; }
+.secondary {
+  background: #292929;
+  color: white;
+  border: 1px solid #494949;
+}
+.secondary:hover { border-color: var(--gold); }
+
+.panel {
+  background: var(--surface);
+  color: white;
+  border-radius: 13px;
+  padding: 25px;
+  border: 1px solid var(--border);
+  max-width: 850px;
+  margin: auto;
+}
+.panel h3 { color: var(--gold-light); }
+.panel p { color: white; line-height: 1.9; }
+label {
+  display: block;
+  margin-top: 13px;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+input, textarea {
+  width: 100%;
+  padding: 14px;
+  margin: 8px 0 12px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  font: inherit;
+  background: #242424;
+  color: white;
+  outline: none;
+}
+input:focus, textarea:focus { border-color: var(--gold); }
+input::placeholder, textarea::placeholder { color: #bdbdbd; }
+textarea { min-height: 110px; resize: vertical; }
+.panel .btn { margin-top: 10px; }
+
+.cart-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 0;
+  border-bottom: 1px solid #373737;
+  flex-wrap: wrap;
+  color: white;
+}
+.qty-btn {
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 4px 10px;
+  background: #292929;
+  color: white;
+  cursor: pointer;
+}
+.remove {
+  color: #ff9999;
+  background: transparent;
+  border: 0;
+  padding: 5px;
+  cursor: pointer;
+}
+.note {
+  font-size: 12px;
+  color: #cccccc;
+  line-height: 1.9;
+  text-align: center;
+  margin-top: 22px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 15px;
+}
+.contact-card {
+  background: #171717;
+  border: 1px solid #383838;
+  border-radius: 10px;
+  padding: 20px;
+}
+.contact-card h3 { color: var(--gold-light); margin-top: 0; }
+.contact-card p { color: white; line-height: 1.9; }
+
+footer {
+  background: #030303;
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+  line-height: 2.2;
+  margin-top: 25px;
+  border-top: 2px solid var(--gold);
+}
+footer a { color: var(--gold-light); }
+
+@media(max-width:600px) {
+  header { padding: 15px 5%; }
+  nav { gap: 12px; }
+  nav a { font-size: 13px; }
+  .hero { padding: 48px 5%; }
+  section { padding: 32px 5%; }
+  .panel { padding: 18px; }
+  .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+  .product-art { height: 110px; font-size: 48px; }
+  .product-info { padding: 12px; }
+  .product-info h3 { font-size: 15px; }
+  .product-info p { font-size: 12px; }
+  .product-info .btn { font-size: 12px; padding: 11px 6px; }
+}
+@media(max-width:350px) {
+  .products { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">B</div>
+    <div>
+      <h2>الباشا</h2>
+      <small>للتوريد والتجارة</small>
+    </div>
+  </div>
+  <nav>
+    <a href="#home">الرئيسية</a>
+    <a href="#products">المنتجات</a>
+    <a href="#cart">السلة</a>
+    <a href="#inquiry">استفسار عن طلب</a>
+    <a href="#contact">تواصل معنا</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero" id="home">
+    <h1>مؤسسة <span>الباشا</span><br>للتوريد والتجارة</h1>
+    <p>
+      كل احتياجاتك في مكان واحد.
+      منتجات متنوعة وخدمة مميزة لتلبية احتياجات الأفراد والشركات والمحلات.
+    </p>
+    <a class="btn gold" href="#products">اكتشف منتجاتنا</a>
+    <a class="btn outline" href="#contact">تواصل معنا</a>
+  </div>
+
+  <section id="products">
+    <div class="section-title">
+      <h2>منتجاتنا</h2>
+      <p>اختار القسم المناسب، واستفسر عن الأسعار والتفاصيل مباشرةً.</p>
+    </div>
+    <div class="categories" id="categories"></div>
+    <div class="products" id="productsGrid"></div>
+    <p class="note">
+      لمعرفة السعر النهائي وتوافر المنتجات والكميات، تواصل معنا عبر واتساب.
+    </p>
+  </section>
+
+  <section id="cart">
+    <div class="section-title">
+      <h2>سلة المشتريات</h2>
+      <p>اجمع المنتجات المطلوبة وأرسل تفاصيل طلبك لنا.</p>
+    </div>
+    <div class="panel">
+      <div id="cartItems">السلة فارغة حاليًا.</div>
+      <label for="customerName">الاسم</label>
+      <input id="customerName" placeholder="اكتب اسمك">
+      <label for="customerPhone">رقم موبايلك</label>
+      <input id="customerPhone" placeholder="اكتب رقم موبايلك" inputmode="tel">
+      <label for="customerAddress">عنوان التوصيل</label>
+      <input id="customerAddress" placeholder="اكتب عنوان التوصيل">
+      <button class="btn gold" onclick="sendOrder()">إرسال الطلب على واتساب</button>
+    </div>
+  </section>
+
+  <section id="inquiry">
+    <div class="section-title">
+      <h2>استفسار عن طلب</h2>
+      <p>أرسل بيانات طلبك واستفسارك عبر واتساب.</p>
+    </div>
+    <div class="panel">
+      <label for="orderNumber">رقم الطلب إن وجد</label>
+      <input id="orderNumber" placeholder="اكتب رقم الطلب">
+      <label for="inquiryPhone">رقم موبايلك</label>
+      <input id="inquiryPhone" placeholder="رقم الموبايل المستخدم في الطلب" inputmode="tel">
+      <label for="inquiryMessage">تفاصيل الاستفسار</label>
+      <textarea id="inquiryMessage" placeholder="عايز تعرف حالة الطلب أو ميعاد التوصيل؟ اكتب استفسارك هنا"></textarea>
+      <button class="btn gold" onclick="sendInquiry()">إرسال الاستفسار على واتساب</button>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-title">
+      <h2>تواصل معنا</h2>
+      <p>يسعدنا استقبال طلباتكم واستفساراتكم.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>صاحب المؤسسة</h3>
+        <p>أحمد الباشا</p>
+      </div>
+      <div class="contact-card">
+        <h3>عنوان المؤسسة</h3>
+        <p>الأسدية بجوار كوبري المعمورة</p>
+      </div>
+      <div class="contact-card">
+        <h3>اتصال هاتفي</h3>
+        <p><a href="tel:01016577756">01016577756</a></p>
+      </div>
+      <div class="contact-card">
+        <h3>واتساب الطلبات</h3>
+        <p>01100598951</p>
+        <button class="btn gold" onclick="openWhatsApp('السلام عليكم، أريد التواصل مع مؤسسة الباشا.')">
+          راسلنا الآن
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <strong>مؤسسة الباشا للتوريد والتجارة</strong><br>
+  الأسدية بجوار كوبري المعمورة<br>
+  هاتف: <a href="tel:01016577756">01016577756</a><br>
+  واتساب: 01100598951<br>
+  جميع الحقوق محفوظة © <span id="year"></span>
+</footer>
+
+<script>
+// رقم واتساب موحد لكل وظائف الموقع
+const WHATSAPP_NUMBER = "201100598951";
+
+const items = [
+  {name:"منظف أرضيات",cat:"منظفات",icon:"🧴",desc:"للنظافة اليومية ورائحة منعشة"},
+  {name:"سائل أطباق",cat:"منظفات",icon:"🫧",desc:"للاستخدام اليومي"},
+  {name:"مطهر متعدد الاستخدام",cat:"منظفات",icon:"🧼",desc:"للتنظيف العام"},
+  {name:"مناديل ورقية",cat:"منظفات",icon:"🧻",desc:"مناسبة للاستخدام اليومي"},
+  {name:"شامبو",cat:"مستحضرات تجميل",icon:"🧴",desc:"منتج للعناية الشخصية"},
+  {name:"كريم ترطيب",cat:"مستحضرات تجميل",icon:"🧴",desc:"للعناية بالبشرة"},
+  {name:"صابون",cat:"مستحضرات تجميل",icon:"🧼",desc:"للاستخدام اليومي"},
+  {name:"مناديل أطفال",cat:"مستلزمات أطفال",icon:"🍼",desc:"مناديل للاستخدام اليومي"},
+  {name:"حفاضات أطفال",cat:"مستلزمات أطفال",icon:"👶",desc:"مقاسات متعددة حسب التوفر"},
+  {name:"أكياس تعبئة",cat:"تغليف وتعبئة",icon:"🛍️",desc:"للتعبئة والاستخدام التجاري"},
+  {name:"أكواب ورقية",cat:"تغليف وتعبئة",icon:"🥤",desc:"للاستخدامات المختلفة"},
+  {name:"أكياس مطبوعة حسب الطلب",cat:"تغليف وتعبئة",icon:"📦",desc:"طباعة حسب المقاس والكمية والتصميم"},
+  {name:"بالونات أعياد ميلاد",cat:"أعياد ميلاد وسبوع",icon:"🎈",desc:"للمناسبات والاحتفالات"},
+  {name:"مستلزمات سبوع",cat:"أعياد ميلاد وسبوع",icon:"🎁",desc:"أصناف متنوعة حسب التوفر"}
+];
+
+let cart = [];
+let selectedCategory = "الكل";
+
+function openWhatsApp(message) {
+  const url = "https://wa.me/" + WHATSAPP_NUMBER +
+    "?text=" + encodeURIComponent(message);
+  window.open(url, "_blank");
+}
+
+function renderCategories() {
+  const categories = ["الكل", ...new Set(items.map(item => item.cat))];
+  document.getElementById("categories").innerHTML = categories.map(cat =>
+    `<button class="category ${cat === selectedCategory ? "active" : ""}"
+      onclick="selectCategory('${cat}')">${cat}</button>`
+  ).join("");
+}
+
+function selectCategory(cat) {
+  selectedCategory = cat;
+  renderCategories();
+  renderProducts();
+}
+
+function renderProducts() {
+  const shown = selectedCategory === "الكل"
+    ? items : items.filter(item => item.cat === selectedCategory);
+
+  document.getElementById("productsGrid").innerHTML = shown.map(item => {
+    const index = items.indexOf(item);
+    return `
+      <article class="product">
+        <div class="product-art">${item.icon}</div>
+        <div class="product-info">
+          <h3>${item.name}</h3>
+          <p>${item.desc}</p>
+          <button class="btn gold" onclick="addToCart(${index})">
+            أضف للسلة
+          </button>
+          <button class="btn secondary" onclick="askAbout(${index})">
+            استفسر عن السعر
+          </button>
+        </div>
+      </article>`;
+  }).join("");
+}
+
+function addToCart(index) {
+  const found = cart.find(item => item.index === index);
+  if (found) found.qty++;
+  else cart.push({index, qty:1});
+  renderCart();
+  alert("تمت إضافة المنتج للسلة");
+}
+
+function changeQty(index, amount) {
+  const found = cart.find(item => item.index === index);
+  if (!found) return;
+  found.qty += amount;
+  if (found.qty <= 0) {
+    cart = cart.filter(item => item.index !== index);
+  }
+  renderCart();
+}
+
+function renderCart() {
+  const container = document.getElementById("cartItems");
+
+  if (!cart.length) {
+    container.innerHTML = "السلة فارغة حاليًا.";
+    return;
+  }
+
+  container.innerHTML = cart.map(row => {
+    const item = items[row.index];
+    return `<div class="cart-row">
+      <span>${item.name}</span>
+      <span>
+        <button class="qty-btn" onclick="changeQty(${row.index},-1)">−</button>
+        ${row.qty}
+        <button class="qty-btn" onclick="changeQty(${row.index},1)">+</button>
+        <button class="remove" onclick="changeQty(${row.index},-${row.qty})">حذف</button>
+      </span>
+    </div>`;
+  }).join("");
+}
+
+function sendOrder() {
+  if (!cart.length) {
+    alert("أضف منتجًا للسلة أولًا");
+    return;
+  }
+
+  const name = document.getElementById("customerName").value.trim();
+  const phone = document.getElementById("customerPhone").value.trim();
+  const address = document.getElementById("customerAddress").value.trim();
+
+  if (!name || !phone || !address) {
+    alert("من فضلك اكتب الاسم ورقم الموبايل والعنوان");
+    return;
+  }
+
+  const details = cart.map(row =>
+    `- ${items[row.index].name} × ${row.qty}`
+  ).join("\n");
+
+  openWhatsApp(
+    `السلام عليكم، أريد طلب منتجات من مؤسسة الباشا:\n` +
+    `الاسم: ${name}\nرقم العميل: ${phone}\nالعنوان: ${address}\n\n` +
+    `المنتجات المطلوبة:\n${details}\n\n` +
+    `برجاء إرسال الأسعار والتأكد من التوفر وتكلفة التوصيل.`
+  );
+}
+
+function sendInquiry() {
+  const order = document.getElementById("orderNumber").value.trim();
+  const phone = document.getElementById("inquiryPhone").value.trim();
+  const message = document.getElementById("inquiryMessage").value.trim();
+
+  if (!order && !phone && !message) {
+    alert("اكتب رقم الطلب أو رقم موبايلك أو تفاصيل الاستفسار");
+    return;
+  }
+
+  openWhatsApp(
+    `السلام عليكم، أريد الاستفسار عن طلب.\n` +
+    `رقم الطلب: ${order || "غير متوفر"}\n` +
+    `رقم موبايل العميل: ${phone || "غير مكتوب"}\n` +
+    `تفاصيل الاستفسار: ${message || "أرجو مساعدتي في متابعة الطلب."}`
+  );
+}
+
+function askAbout(index) {
+  const item = items[index];
+  openWhatsApp(
+    `السلام عليكم، أريد الاستفسار عن سعر المنتج التالي:\n` +
+    `اسم المنتج: ${item.name}\n` +
+    `برجاء معرفة السعر والتفاصيل والتوفر.`
+  );
+}
+
+document.getElementById("year").textContent = new Date().getFullYear();
+renderCategories();
+renderProducts();
+renderCart();
+</script>
+
+</body>
+</html>
